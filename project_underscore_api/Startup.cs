@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using project_underscore_api.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace project_underscore_api
 {
@@ -30,8 +32,14 @@ namespace project_underscore_api
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "project_underscore_api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project _ API", Version = "v1" });
             });
+
+            services.AddDbContext<ProjectUnderscoreContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ProjectUnderscore"))
+            );
+
+            services.AddDatabaseDeveloperPageExceptionFilter();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
