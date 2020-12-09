@@ -30,8 +30,8 @@ namespace project_underscore_api
                 try
                 {
                     var context = services.GetRequiredService<ProjectUnderscoreContext>();
-                    context.Database.EnsureCreated();
-                    // DbInitializer.Initialize(context);
+                    //context.Database.EnsureCreated();
+                    DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

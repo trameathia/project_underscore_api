@@ -12,10 +12,14 @@ namespace project_underscore_api.Data
         public ProjectUnderscoreContext (DbContextOptions<ProjectUnderscoreContext> options) : base(options) {}
 
         public DbSet<User> Users { get; set; }
+        public DbSet<UserItem> UserItems { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("User");
+            //modelBuilder.Entity<User>().Property(u => u.CreateDate).HasDefaultValueSql("getDate()");
+            //modelBuilder.Entity<UserItem>().ToTable("UserItem");
+            //modelBuilder.Entity<UserItemTag>().ToTable("UserItemTag");
         }
     }
 }

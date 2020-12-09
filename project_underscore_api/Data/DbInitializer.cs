@@ -11,7 +11,7 @@ namespace project_underscore_api.Data
     {
         public static void Initialize(ProjectUnderscoreContext context)
         {
-            context.Database.EnsureCreated();
+            //context.Database.EnsureCreated();
 
             //Look for data
             if(context.Users.Any())
@@ -27,6 +27,21 @@ namespace project_underscore_api.Data
 
             context.Users.AddRange(users);
             context.SaveChanges();
+
+            users[1].Items.AddRange(new UserItem[] {
+                new UserItem { Name = "Folgers", Description = "medium roast coffee", Opinion = "not a fan", Rating = 1 },
+                new UserItem { Name = "Donut Shop", Description = "medium roast coffee", Opinion = "awesome", Rating = 9 }
+            });
+
+            context.SaveChanges();
+            //var items = new Item[]
+            //{
+            //    new Item{Name="Folgers",Description="medium roast coffee",Opinion="not a fan",Rating=1},
+            //    new Item{Name="Donut Shop",Description="medium roast coffee",Opinion="awesome",Rating=9}
+            //};
+
+            //context.Items.AddRange(items);
+            //context.SaveChanges();
         }
     }
 }

@@ -28,6 +28,8 @@ namespace project_underscore_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddDbContext<ProjectUnderscoreContext>(option =>
+                //option.UseInMemoryDatabase("ProjectUnderscore"));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -36,7 +38,7 @@ namespace project_underscore_api
             });
 
             services.AddDbContext<ProjectUnderscoreContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ProjectUnderscore"))
+                options.UseSqlServer(Configuration.GetConnectionString("ProjectUnderscoreContext"))
             );
 
             services.AddDatabaseDeveloperPageExceptionFilter();
